@@ -2,11 +2,12 @@
 ## 项目简介
 **MGC** 是基于《Getting Over It with Bennett Foddy》开发的非商业模组包，使用 C# 和 Unity 开发，通过反编译工具 dnSpy 实现游戏机制扩展
 ## 协作规则
+- 遵循 [AGPL-3.0 许可证](LICENSE) 附加非商业条款
 - 欢迎通过 Issue 和 Pull Request 提交建议或代码
 - 未经明确授权，禁止用于商业用途，创建分叉仓库请标明原仓库链接
 ## 免责声明
 - 本模组通过 dnSpy 和 Unity 对《Getting Over It》进行合法逆向工程，仅用于学习交流目的
-- 原始游戏版权归 Bennett Foddy 所有，因此不提供完整安装包，仅在qq群里发布完整安装包
+- 原始游戏版权归 Bennett Foddy 所有，因此不提供完整安装包
 - 如有侵权素材，请联系我要求删除
 ## 开发
 本人的话比较懒，而且代码写的很烂，目前在边学边开发，如果你认为我哪里写的很烂可以联系我并指导我
@@ -22,9 +23,12 @@ GOILauncher.Multiplayer：用于MGC的联机功能，[作者Zonakkis](https://gi
 fwwhpluinlib：进度显示器，序列化工具，计时器和其他没啥用的功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 MGC.API：用于获取游戏内事件和修改脚本内功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 MGC.Multiplayer：目前没有什么用，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
-## 开发人员
-- [Zonakkis](https://space.bilibili.com/292855911)<br/> [Nameless27](https://space.bilibili.com/401593576)<br/> [-Fm2-](https://space.bilibili.com/287853853)<br/> [唯呵wh](https://space.bilibili.com/435980199)<br/>
-## 联系方式
+### 开发人员
+- [Zonakkis](https://space.bilibili.com/292855911)<br/>
+- [Nameless27](https://space.bilibili.com/401593576)<br/>
+- [-Fm2-](https://space.bilibili.com/287853853)<br/>
+- [唯呵wh](https://space.bilibili.com/435980199)<br/>
+### 联系方式
 - Bilibili 账号：[aWinHimOP](https://space.bilibili.com/435980199)<br/>
 - QQ：2990280065
 - Modpack交流群：[Modpack交流一群](https://qm.qq.com/q/kCubnSuMXC)<br/>
