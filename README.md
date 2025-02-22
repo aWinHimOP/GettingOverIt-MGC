@@ -24,7 +24,6 @@
 - GOILauncher.Multiplayer：用于MGC的联机功能，[作者Zonakkis](https://github.com/Zonakkis)<br/>
 - fwwhpluinlib：进度显示器，序列化工具，计时器和其他没啥用的功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 - MGC.API：用于获取游戏内事件和修改脚本内功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
-- MGC.Multiplayer：目前没有什么用，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 ### 开发人员
 - [Zonakkis](https://space.bilibili.com/292855911)<br/>
 - [Nameless27](https://space.bilibili.com/401593576)<br/>
