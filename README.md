@@ -11,11 +11,10 @@
 - 如有侵权素材，请联系我要求删除
 ## 开发
 本人的话比较懒，而且代码写的很烂，目前在边学边开发，如果你认为我哪里写的很烂可以联系我并指导我
-## 致谢
-### 相关库
-#### 已发布的开源库
+## 相关库
+### 已发布的开源库
 - [InGameDebugger](https://github.com/DearVa/Unity-Runtime-Inspector)：用于调试<br/>
-#### 未发布的开源库
+### 未发布的开源库
 - CustomBG：修改游戏内背景，[作者Nameless27](https://github.com/Nameless27)<br/>
 - SkinCustomizer：修改游戏内缸人皮肤和罐子，[作者Nameless27](https://github.com/Nameless27)<br/>
 - SplitsTimer：获取游戏内计时器并显示在屏幕上，[作者Nameless27](https://github.com/Nameless27)<br/>
@@ -24,12 +23,12 @@
 - GOILauncher.Multiplayer：用于MGC的联机功能，[作者Zonakkis](https://github.com/Zonakkis)<br/>
 - fwwhpluinlib：进度显示器，序列化工具，计时器和其他没啥用的功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 - MGC.API：用于获取游戏内事件和修改脚本内功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
-### 开发人员
+## 开发人员
 - [Zonakkis](https://space.bilibili.com/292855911)<br/>
 - [Nameless27](https://space.bilibili.com/401593576)<br/>
 - [-Fm2-](https://space.bilibili.com/287853853)<br/>
 - [唯呵wh](https://space.bilibili.com/435980199)<br/>
-### 联系方式
+## 联系方式
 - Bilibili 账号：[aWinHimOP](https://space.bilibili.com/435980199)<br/>
 - QQ：2990280065
 - Modpack交流群：[Modpack交流一群](https://qm.qq.com/q/kCubnSuMXC)<br/>
