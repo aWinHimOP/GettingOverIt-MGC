@@ -3,10 +3,10 @@
 **MGC** 是基于《Getting Over It with Bennett Foddy》开发的非商业模组包，使用 C# 和 Unity 开发，通过反编译工具 dnSpy 实现游戏机制扩展
 ## 协作规则
 - 欢迎通过 Issue 和 Pull Request 提交建议或代码
-- 未经明确授权，禁止用于商业用途
+- 未经明确授权，禁止用于商业用途，创建分叉仓库请标明原仓库链接
 ## 免责声明
 - 本模组通过 dnSpy 和 Unity 对《Getting Over It》进行合法逆向工程，仅用于学习交流目的
-- 原始游戏版权归 Bennett Foddy 所有，不得将本模组与盗版游戏结合使用
+- 原始游戏版权归 Bennett Foddy 所有，不得将本模组包与盗版游戏结合使用
 - 如有侵权素材，请联系我要求删除
 ## 致谢
 ### 相关库
