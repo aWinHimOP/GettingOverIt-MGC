@@ -13,7 +13,9 @@
 本人的话比较懒，而且代码写的很烂，目前在边学边开发，如果你认为我哪里写的很烂可以联系我并指导我
 ## 致谢
 ### 相关库
+#### 已发布的开源库
 [InGameDebugger](https://github.com/DearVa/Unity-Runtime-Inspector)：用于调试<br/>
+#### 未发布的开源库
 CustomBG：修改游戏内背景，[作者Nameless27](https://github.com/Nameless27)<br/>
 SkinCustomizer：修改游戏内缸人皮肤和罐子，[作者Nameless27](https://github.com/Nameless27)<br/>
 SplitsTimer：获取游戏内计时器并显示在屏幕上，[作者Nameless27](https://github.com/Nameless27)<br/>
