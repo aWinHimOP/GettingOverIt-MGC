@@ -6,8 +6,10 @@
 - 未经明确授权，禁止用于商业用途，创建分叉仓库请标明原仓库链接
 ## 免责声明
 - 本模组通过 dnSpy 和 Unity 对《Getting Over It》进行合法逆向工程，仅用于学习交流目的
-- 原始游戏版权归 Bennett Foddy 所有，不得将本模组包与盗版游戏结合使用
+- 原始游戏版权归 Bennett Foddy 所有，因此不提供完整安装包，仅在qq群里发布完整安装包
 - 如有侵权素材，请联系我要求删除
+## 开发
+本人的话比较懒，而且代码写的很烂，目前在边学边开发，如果你认为我哪里写的很烂可以联系我并指导我
 ## 致谢
 ### 相关库
 [InGameDebugger](https://github.com/DearVa/Unity-Runtime-Inspector)：用于调试<br/>
@@ -25,4 +27,4 @@ MGC.Multiplayer：目前没有什么用，[作者aWinHimOP](https://github.com/a
 ## 联系方式
 - Bilibili 账号：[aWinHimOP](https://space.bilibili.com/435980199)<br/>
 - QQ：2990280065
-- [Modpack交流一群](https://qm.qq.com/q/kCubnSuMXC)<br/>
+- Modpack交流群：[Modpack交流一群](https://qm.qq.com/q/kCubnSuMXC)<br/>
