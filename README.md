@@ -11,15 +11,15 @@
 ## 致谢
 ### 相关库
 [InGameDebugger](https://github.com/DearVa/Unity-Runtime-Inspector)：用于调试<br/>
-CustomBG：修改游戏内背景，作者(https://github.com/Nameless27)<br/>
-SkinCustomizer：修改游戏内缸人皮肤和罐子，[作者](https://github.com/Nameless27)<br/>
-SplitsTimer：获取游戏内计时器并显示在屏幕上，[作者](https://github.com/Nameless27)<br/>
-pepluginlib：SkinCustomizer和SplitsTimer的前置库，用于处理文件、获取调试信息、处理xml文件和给其他对象添加组件，[作者](https://github.com/Nameless27)<br/>
-Nuguilib：SkinCustomizer和SplitsTimer的前置库，用于处理imgui，[作者](https://github.com/Nameless27)<br/>
-GOILauncher.Multiplayer：用于MGC的联机功能，[作者](https://github.com/Zonakkis)<br/>
-fwwhpluinlib：进度显示器，序列化工具，计时器和其他没啥用的功能，作者(https://github.com/aWinHimOP)<br/>
-MGC.API：用于获取游戏内事件和修改脚本内功能，作者(https://github.com/aWinHimOP)<br/>
-MGC.Multiplayer：目前没有什么用，作者(https://github.com/aWinHimOP)<br/>
+CustomBG：修改游戏内背景，[作者Nameless27](https://github.com/Nameless27)<br/>
+SkinCustomizer：修改游戏内缸人皮肤和罐子，[作者Nameless27](https://github.com/Nameless27)<br/>
+SplitsTimer：获取游戏内计时器并显示在屏幕上，[作者Nameless27](https://github.com/Nameless27)<br/>
+pepluginlib：SkinCustomizer和SplitsTimer的前置库，用于处理文件、获取调试信息、处理xml文件和给其他对象添加组件，[作者Nameless27](https://github.com/Nameless27)<br/>
+Nuguilib：SkinCustomizer和SplitsTimer的前置库，用于处理imgui，[作者Nameless27](https://github.com/Nameless27)<br/>
+GOILauncher.Multiplayer：用于MGC的联机功能，[作者Zonakkis](https://github.com/Zonakkis)<br/>
+fwwhpluinlib：进度显示器，序列化工具，计时器和其他没啥用的功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
+MGC.API：用于获取游戏内事件和修改脚本内功能，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
+MGC.Multiplayer：目前没有什么用，[作者aWinHimOP](https://github.com/aWinHimOP)<br/>
 ## 联系方式
 - Bilibili 账号：[aWinHimOP](https://space.bilibili.com/435980199)<br/>
 - QQ：2990280065
