@@ -1,4 +1,3 @@
-```markdown
 # MGC Mod 开发文档
 
 ## 目录
@@ -14,7 +13,7 @@
 9. [完整示例](#完整示例)
 10. [常见问题](#常见问题)
 11. [API 参考](#api-参考)
-
+12. [相关文档](#相关文档)
 ---
 
 ## 快速开始
@@ -541,14 +540,17 @@ public class EventDemoMod : ModBase
     
     public override void RegisterListeners()
     {
+        // 监听玩家受伤
         Listen<int>("Player.TakeDamage", (damage) => {
             MGCManager.DebugInfo.Add($"玩家受到 {damage} 点伤害");
         });
         
+        // 监听场景切换
         Listen("ScreenFader.StartSceneRoutine", () => {
             MGCManager.DebugInfo.Add("场景正在切换...");
         });
         
+        // 监听菜单开关
         Listen<bool>("MGC.UIEvents.ToggleMenu", (isActive) => {
             MGCManager.DebugInfo.Add($"菜单状态: {(isActive ? "开启" : "关闭")}");
         });
@@ -753,114 +755,7 @@ if (settings != null)
 
 ---
 
-## 更新日志
+## 相关文档
 
-> 📋 **更新日志请查看：[Changelog.md](Changelog.md)**
-```
-
----
-
-## `docs/EventList.md`
-
-```markdown
-# MGC 事件列表
-
-本文档列出所有 MGC 模组包中可监听的事件。
-
-> 游戏内部通过 `ModEventSystem.Trigger()` 触发这些事件。
-
----
-
-## 事件列表
-
-| 事件名 | 参数类型 | 触发时机 | 说明 |
-|--------|----------|----------|------|
-| `CameraControl.Teleport` | 无 | 摄像机传送时 | 当摄像机传送到新位置时触发 |
-| `ScreenFader.StartSceneRoutine` | 无 | 场景切换开始时 | 场景淡入淡出开始时触发 |
-| `MGC.UIEvents.ToggleMenu` | `bool` | 菜单开关时 | `true`=打开，`false`=关闭 |
-
----
-
-## 使用示例
-
-```csharp
-public class MyMod : ModBase
-{
-    public override void RegisterListeners()
-    {
-        // 监听摄像机传送
-        Listen("CameraControl.Teleport", () => {
-            MGCManager.DebugInfo.Add("摄像机传送了");
-        });
-        
-        // 监听场景切换
-        Listen("ScreenFader.StartSceneRoutine", () => {
-            MGCManager.DebugInfo.Add("场景开始切换");
-        });
-        
-        // 监听菜单开关
-        Listen<bool>("MGC.UIEvents.ToggleMenu", (isOpen) => {
-            MGCManager.DebugInfo.Add($"菜单{(isOpen ? "打开" : "关闭")}");
-        });
-    }
-}
-```
-
----
-
-## 添加新事件（开发者用）
-
-在游戏代码中调用：
-
-```csharp
-// 无参数
-ModEventSystem.Trigger("YourEventName");
-
-// 带参数
-ModEventSystem.Trigger("YourEventName", param1, param2);
-
-// 带返回值
-int result = ModEventSystem.TriggerWithReturn<int>("YourEventName", args);
-```
-
-添加后请更新本文档。
-```
-
----
-
-## `docs/Changelog.md`
-
-```markdown
-# MGC 更新日志
-
-## v1.28.0 (2026-05-29)
-
-### 新增
-- ✨ Mod 生命周期管理
-- ✨ 事件系统（监听/触发）
-- ✨ 配置持久化
-- ✨ UI 扩展控件
-- ✨ Mod 间通信
-
-### 事件
-- `CameraControl.Teleport`
-- `ScreenFader.StartSceneRoutine`
-- `MGC.UIEvents.ToggleMenu`
-
----
-
-## 模板
-
-```markdown
-## v版本号 (日期)
-
-### 新增
-- 新增功能
-
-### 修复
-- 修复问题
-
-### 变更
-- 变更内容
-```
-```
+- 📋 [更新日志](Changelog.md)
+- 📖 [完整事件列表](EventList.md)
