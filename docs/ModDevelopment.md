@@ -21,9 +21,11 @@
 
 ### 环境要求
 
-- Unity 2017.4.24f1 版本
-- .NET Framework 3.5 及以下
-- dnSpy（用于反编译和调试）或 Visual Studio
+| 项目 | 要求 |
+|------|------|
+| Unity 版本 | 2017.4.24f1 |
+| .NET Framework | 3.5 及以下 |
+| 开发工具 | dnSpy 或 Visual Studio |
 
 ### 第一个 Mod
 
@@ -43,7 +45,7 @@ public class MyFirstMod : ModBase
     
     public override void Load()
     {
-        base.Load();  // 必须调用
+        base.Load();
         MGCManager.DebugInfo.Add($"[{name}] 加载成功！");
     }
 }
@@ -51,8 +53,10 @@ public class MyFirstMod : ModBase
 
 ### Mod 放置位置
 
-- **内部 Mod**：直接编译到游戏主程序
-- **外部 Mod**（预留）：放入 `{持久化目录}/Mods/` 文件夹
+| 类型 | 位置 |
+|------|------|
+| 内部 Mod | 直接编译到游戏主程序 |
+| 外部 Mod（预留） | `{持久化目录}/Mods/` 文件夹 |
 
 ---
 
@@ -60,7 +64,7 @@ public class MyFirstMod : ModBase
 
 ### IMod 接口
 
-所有 Mod 必须实现 `IMod`，但推荐继承 `ModBase`。
+所有 Mod 必须实现 `IMod`，推荐继承 `ModBase`。
 
 | 成员 | 类型 | 说明 |
 |------|------|------|
@@ -110,7 +114,7 @@ public class MyFirstMod : ModBase
                            ▼
 ┌─────────────────────────────────────────────────────────┐
 │                      游戏运行                            │
-│  ├── Update()          # 每帧（需要自己检查 enabled）    │
+│  ├── Update()          # 每帧（需自己检查 enabled）      │
 │  ├── FixedUpdate()     # 固定帧                         │
 │  ├── OnGUI()           # IMGUI 绘制                     │
 │  └── OnSceneLoaded()   # 场景切换时                     │
@@ -197,8 +201,8 @@ int result = ModEventSystem.TriggerWithReturn<int>("Combat.CalculateDamage", 50,
 // 获取所有被监听的方法
 List<string> methods = ModEventSystem.GetMonitoredMethods();
 
-// 保存到文件（自动保存到 Mods/MonitoredMethods.txt）
-ModEventSystem.SaveMonitoredMethods();
+// 保存到文件
+ModEventSystem.SaveMonitoredMethods();  // 保存到 Mods/MonitoredMethods.txt
 
 // 清除所有事件（调试用）
 ModEventSystem.ClearAllEvents();
@@ -223,7 +227,7 @@ public class MyMod : ModBase
         // 带返回值
         int gold = Call<int>("Economy.GetGold");
         
-        // 方式二：直接获取实例（需要知道类型和 Mod 名称）
+        // 方式二：直接获取实例
         var economy = GetMod<EconomyMod>("EconomyMod");
         economy?.AddGold(100);
     }
@@ -239,7 +243,6 @@ public class EconomyMod : ModBase
     
     public override void RegisterListeners()
     {
-        // 暴露方法
         Listen<int>("Economy.AddGold", AddGold);
         Listen("Economy.GetGold", () => _gold);
         Listen<int, bool>("Economy.SpendGold", (amount, checkOnly) => {
@@ -319,7 +322,7 @@ public class MyUIMod : ModBase
         // 1. 标题
         UIControls.CreateCategoryTitle(parent, "我的模组设置", 40);
         
-        // 2. 容器（所有控件放在容器内）
+        // 2. 容器
         var container = UIControls.CreateValueContentVertical(parent).transform;
         
         // 3. 开关
@@ -358,9 +361,9 @@ public class MyUIMod : ModBase
 | 控件 | 方法 | 说明 |
 |------|------|------|
 | 标题 | `CreateCategoryTitle(parent, text, fontSize)` | 分组标题 |
-| 开关 | `CreateToggle(parent, label, defaultValue, onValueChanged, useDefaultColors)` | 布尔值开关 |
-| 输入框 | `CreateInputField(parent, label, defaultValue, onValueChanged, useDefaultColors)` | 文本/数字输入 |
-| 按钮 | `CreateButton(parent, label, onClick, useDefaultColors)` | 触发操作 |
+| 开关 | `CreateToggle(parent, label, defaultValue, callback, useDefaultColors)` | 布尔值开关 |
+| 输入框 | `CreateInputField(parent, label, defaultValue, callback, useDefaultColors)` | 文本/数字输入 |
+| 按钮 | `CreateButton(parent, label, callback, useDefaultColors)` | 触发操作 |
 | 文本 | `CreateContentText(parent, text, fontSize, color, fontStyle, useDefaultColors)` | 显示说明 |
 
 > 所有控件都支持 `useDefaultColors` 参数，设为 `true` 时使用 Mod 面板的默认配色。
@@ -378,7 +381,7 @@ public class MyUpdateMod : ModBase
     
     public override void Update(float deltaTime, GameObject player)
     {
-        if (!enabled) return;  // 必须自己检查
+        if (!enabled) return;
         
         _timer += deltaTime;
         if (_timer >= 1f)
@@ -387,7 +390,6 @@ public class MyUpdateMod : ModBase
             MGCManager.DebugInfo.Add("每秒执行一次");
         }
         
-        // 获取玩家位置
         if (player != null)
         {
             Vector3 pos = player.transform.position;
@@ -403,7 +405,7 @@ public class MyUpdateMod : ModBase
 public override void FixedUpdate(float deltaTime, GameObject player)
 {
     if (!enabled) return;
-    // 物理逻辑放在这里（如移动、碰撞检测）
+    // 物理逻辑放在这里
 }
 ```
 
@@ -420,7 +422,7 @@ public override void FixedUpdate(float deltaTime, GameObject player)
 
 ## 完整示例
 
-### 示例一：简单计时器 Mod（不需要重启）
+### 示例一：简单计时器 Mod
 
 ```csharp
 using MGC.ModSystem;
@@ -525,7 +527,7 @@ public class GravityMod : ModBase
 }
 ```
 
-### 示例三：事件监听 Mod（监听游戏事件）
+### 示例三：事件监听 Mod
 
 ```csharp
 using MGC.ModSystem;
@@ -539,17 +541,14 @@ public class EventDemoMod : ModBase
     
     public override void RegisterListeners()
     {
-        // 监听玩家受伤
         Listen<int>("Player.TakeDamage", (damage) => {
             MGCManager.DebugInfo.Add($"玩家受到 {damage} 点伤害");
         });
         
-        // 监听场景切换
         Listen("ScreenFader.StartSceneRoutine", () => {
             MGCManager.DebugInfo.Add("场景正在切换...");
         });
         
-        // 监听菜单开关
         Listen<bool>("MGC.UIEvents.ToggleMenu", (isActive) => {
             MGCManager.DebugInfo.Add($"菜单状态: {(isActive ? "开启" : "关闭")}");
         });
@@ -560,7 +559,7 @@ public class EventDemoMod : ModBase
 ### 示例四：Mod 间协作
 
 ```csharp
-// EconomyMod.cs - 提供经济功能
+// EconomyMod.cs
 public class EconomyMod : ModBase
 {
     public override string name => "经济系统";
@@ -580,7 +579,7 @@ public class EconomyMod : ModBase
     }
 }
 
-// ShopMod.cs - 使用经济功能
+// ShopMod.cs
 public class ShopMod : ModBase
 {
     public override string name => "商店";
@@ -590,11 +589,7 @@ public class ShopMod : ModBase
     public override void Load()
     {
         base.Load();
-        
-        // 给玩家 50 金币
         Call("Economy.AddGold", 50);
-        
-        // 查询当前金币
         int gold = Call<int>("Economy.GetGold");
         MGCManager.DebugInfo.Add($"当前金币: {gold}");
     }
@@ -607,26 +602,29 @@ public class ShopMod : ModBase
 
 ### Q1: Mod 加载后没效果？
 
-**检查清单：**
-- [ ] `Load()` 中是否调用了 `base.Load()`
-- [ ] `RequiresRestart = true` 的 Mod 是否重启了游戏
-- [ ] 查看 `MGCManager.DebugInfo` 中的错误信息
-- [ ] 确认 Mod 的 `SupportedModpackVersion` 与游戏版本匹配
+| 检查项 | 说明 |
+|--------|------|
+| [ ] | `Load()` 中是否调用了 `base.Load()` |
+| [ ] | `RequiresRestart = true` 的 Mod 是否重启了游戏 |
+| [ ] | 查看 `MGCManager.DebugInfo` 中的错误信息 |
+| [ ] | Mod 的 `SupportedModpackVersion` 与游戏版本匹配 |
 
 ### Q2: 事件监听不触发？
 
-**检查清单：**
-- [ ] 事件名拼写是否正确（区分大小写）
-- [ ] `enabled` 是否为 `true`
-- [ ] 参数类型是否匹配（`int` 不能匹配 `float`）
-- [ ] 是否在 `RegisterListeners()` 中注册了监听
+| 检查项 | 说明 |
+|--------|------|
+| [ ] | 事件名拼写是否正确（区分大小写） |
+| [ ] | `enabled` 是否为 `true` |
+| [ ] | 参数类型是否匹配（`int` 不能匹配 `float`） |
+| [ ] | 是否在 `RegisterListeners()` 中注册了监听 |
 
 ### Q3: 配置没有保存？
 
-**检查：**
-- [ ] 配置保存在 `Unload()` 时自动执行
-- [ ] 可以手动调用 `SaveConfig()` 立即保存
-- [ ] 检查 `ModPlayerPrefs.xml` 文件是否存在
+| 检查项 | 说明 |
+|--------|------|
+| [ ] | 配置在 `Unload()` 时自动保存 |
+| [ ] | 可手动调用 `SaveConfig()` 立即保存 |
+| [ ] | 检查 `ModPlayerPrefs.xml` 文件是否存在 |
 
 ### Q4: 如何调试 Mod？
 
@@ -647,14 +645,15 @@ ModEventSystem.SaveMonitoredMethods();
 
 ### Q5: UI 控件不显示？
 
-**检查：**
-- [ ] 是否在 `OnCreateUGUI` 中创建
-- [ ] `parent` 参数是否正确传递
-- [ ] 控件是否使用了正确的容器（`CreateValueContentVertical` 或 `CreateValueContentHorizontal`）
+| 检查项 | 说明 |
+|--------|------|
+| [ ] | 是否在 `OnCreateUGUI` 中创建 |
+| [ ] | `parent` 参数是否正确传递 |
+| [ ] | 是否使用了正确的容器（`CreateValueContentVertical` 或 `CreateValueContentHorizontal`） |
 
 ### Q6: 如何让 Mod 支持热更新？
 
-设置 `RequiresRestart = false`，然后在 `OnEnableChanged` 中处理 UI 显隐即可。
+设置 `RequiresRestart = false`，然后在 `OnEnableChanged` 中处理 UI 显隐。
 
 ```csharp
 public override void OnEnableChanged(bool newEnabled)
@@ -666,15 +665,13 @@ public override void OnEnableChanged(bool newEnabled)
 
 ### Q7: Update 中 player 参数为 null？
 
-**原因：** 玩家对象可能还未生成或已被销毁。
+玩家对象可能还未生成或已被销毁，需要提前返回。
 
-**解决：**
 ```csharp
 public override void Update(float deltaTime, GameObject player)
 {
     if (!enabled) return;
-    if (player == null) return;  // 提前返回
-    
+    if (player == null) return;
     // 安全使用 player
 }
 ```
@@ -780,7 +777,7 @@ if (settings != null)
 |--------|----------|----------|------|
 | `CameraControl.Teleport` | 无 | 摄像机传送时 | 当摄像机传送到新位置时触发 |
 | `ScreenFader.StartSceneRoutine` | 无 | 场景切换开始时 | 场景淡入淡出开始时触发 |
-| `MGC.UIEvents.ToggleMenu` | `bool` | 菜单开关时 | 参数为 `true` 表示菜单打开，`false` 表示关闭 |
+| `MGC.UIEvents.ToggleMenu` | `bool` | 菜单开关时 | `true`=打开，`false`=关闭 |
 
 ---
 
@@ -813,7 +810,7 @@ public class MyMod : ModBase
 
 ## 添加新事件（开发者用）
 
-如果你需要添加新的事件，在游戏代码中调用：
+在游戏代码中调用：
 
 ```csharp
 // 无参数
@@ -827,4 +824,43 @@ int result = ModEventSystem.TriggerWithReturn<int>("YourEventName", args);
 ```
 
 添加后请更新本文档。
+```
+
+---
+
+## `docs/Changelog.md`
+
+```markdown
+# MGC 更新日志
+
+## v1.28.0 (2026-05-29)
+
+### 新增
+- ✨ Mod 生命周期管理
+- ✨ 事件系统（监听/触发）
+- ✨ 配置持久化
+- ✨ UI 扩展控件
+- ✨ Mod 间通信
+
+### 事件
+- `CameraControl.Teleport`
+- `ScreenFader.StartSceneRoutine`
+- `MGC.UIEvents.ToggleMenu`
+
+---
+
+## 模板
+
+```markdown
+## v版本号 (日期)
+
+### 新增
+- 新增功能
+
+### 修复
+- 修复问题
+
+### 变更
+- 变更内容
+```
 ```
