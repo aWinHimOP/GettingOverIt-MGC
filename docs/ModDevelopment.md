@@ -21,9 +21,9 @@
 
 ### 环境要求
 
-- Unity 2019.4 或更高版本
-- .NET Framework 4.x 或 .NET Standard 2.0
-- dnSpy（用于反编译和调试）
+- Unity 2017.4.24f1 版本
+- .NET Framework 3.5 及以下
+- dnSpy（用于反编译和调试）或 Visual Studio
 
 ### 第一个 Mod
 
@@ -36,10 +36,10 @@ public class MyFirstMod : ModBase
     public override string name => "我的第一个Mod";
     public override string ModVersion => "1.0.0";
     public override string SupportedModpackVersion => "1.28.0";
+    public override bool RequiresRestart => false;
     
     // === 可选实现 ===
     public override string Description => "这是我的第一个Mod";
-    public override bool RequiresRestart => false;
     
     public override void Load()
     {
@@ -187,15 +187,9 @@ ModEventSystem.Trigger("Player.TakeDamage", 10);
 int result = ModEventSystem.TriggerWithReturn<int>("Combat.CalculateDamage", 50, 20, 2);
 ```
 
-### 内置事件列表
+### 可用事件列表
 
-| 事件名 | 参数 | 说明 |
-|--------|------|------|
-| `CameraControl.Teleport` | 无 | 摄像机传送时 |
-| `ScreenFader.StartSceneRoutine` | 无 | 场景切换开始时 |
-| `MGC.UIEvents.ToggleMenu` | `bool` | 菜单开关时 |
-
-> 更多事件请查看游戏源码中的 `ModEventSystem.Trigger` 调用位置。
+> 📖 **完整事件列表请查看：[EventList.md](EventList.md)**
 
 ### 调试事件
 
@@ -762,26 +756,75 @@ if (settings != null)
 
 ---
 
-## 许可证
+## 更新日志
 
-本 Mod 框架采用 **CC BY-NC 4.0** 许可证。
-
-- ✅ 可以免费使用、修改、分享
-- ✅ 必须署名原作者
-- ❌ 禁止商业用途
-
-详见项目根目录的 [LICENSE](../LICENSE) 文件。
+> 📋 **更新日志请查看：[Changelog.md](Changelog.md)**
+```
 
 ---
 
-## 更新日志
+## `docs/EventList.md`
 
-### v1.28.0 (2026-05-29)
+```markdown
+# MGC 事件列表
 
-- ✨ 初始版本发布
-- ✨ 支持 Mod 生命周期管理
-- ✨ 支持事件系统（监听/触发）
-- ✨ 支持配置持久化
-- ✨ 支持 UI 扩展
-- ✨ 支持 Mod 间通信
+本文档列出所有 MGC 模组包中可监听的事件。
+
+> 游戏内部通过 `ModEventSystem.Trigger()` 触发这些事件。
+
+---
+
+## 事件列表
+
+| 事件名 | 参数类型 | 触发时机 | 说明 |
+|--------|----------|----------|------|
+| `CameraControl.Teleport` | 无 | 摄像机传送时 | 当摄像机传送到新位置时触发 |
+| `ScreenFader.StartSceneRoutine` | 无 | 场景切换开始时 | 场景淡入淡出开始时触发 |
+| `MGC.UIEvents.ToggleMenu` | `bool` | 菜单开关时 | 参数为 `true` 表示菜单打开，`false` 表示关闭 |
+
+---
+
+## 使用示例
+
+```csharp
+public class MyMod : ModBase
+{
+    public override void RegisterListeners()
+    {
+        // 监听摄像机传送
+        Listen("CameraControl.Teleport", () => {
+            MGCManager.DebugInfo.Add("摄像机传送了");
+        });
+        
+        // 监听场景切换
+        Listen("ScreenFader.StartSceneRoutine", () => {
+            MGCManager.DebugInfo.Add("场景开始切换");
+        });
+        
+        // 监听菜单开关
+        Listen<bool>("MGC.UIEvents.ToggleMenu", (isOpen) => {
+            MGCManager.DebugInfo.Add($"菜单{(isOpen ? "打开" : "关闭")}");
+        });
+    }
+}
+```
+
+---
+
+## 添加新事件（开发者用）
+
+如果你需要添加新的事件，在游戏代码中调用：
+
+```csharp
+// 无参数
+ModEventSystem.Trigger("YourEventName");
+
+// 带参数
+ModEventSystem.Trigger("YourEventName", param1, param2);
+
+// 带返回值
+int result = ModEventSystem.TriggerWithReturn<int>("YourEventName", args);
+```
+
+添加后请更新本文档。
 ```
